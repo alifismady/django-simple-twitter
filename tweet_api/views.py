@@ -25,7 +25,7 @@ def tweet_list_view(request):
 
 def tweet_create_view(request):
     form = TweetForm(request.POST or None)
-    print(next_url, "-> next url")
+    
     if form.is_valid():
         obj = form.save(commit=False)
         obj.save()
