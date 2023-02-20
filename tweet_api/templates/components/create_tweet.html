@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a tweet</title>
+</head>
+<body>
+    <!-- Tweet Form -->
+    <div class="">
+        <form method="POST" id="post-tweet-form">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td>Content:</td>
+              <td><input type="text" name="content" placeholder="Whats on ur mind" class="form-control" id="content"</td>
+            </tr>
+          </table>
+          <input type="submit" name="submit" value="Create">
+        </form>
+      </div>
+</body>
+</html>
