@@ -17,7 +17,7 @@ function loadTweets(){
     xhr.onload = function() {
         console.log(xhr.response)
         const serverResponse = xhr.response
-        var listedTweets = serverResponse.response
+        var listedTweets = serverResponse
         console.log(listedTweets)
         var finalTweetStr = "";
         for(let i of listedTweets){
