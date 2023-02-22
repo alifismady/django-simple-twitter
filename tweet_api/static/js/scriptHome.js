@@ -10,29 +10,6 @@ function loadTweets(){
     const method = 'GET';
     const url = "/tweet";
     const responseType = "json";
-
-    // change how tweet appears in the page
-    function formatTweet(tweet){
-        var d = new Date(tweet.dateCreated)
-        var ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
-        var mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
-        var da = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(d);
-        var date = `${da}/${mo}/${ye}`
-        var cardReturn = `
-        <div class="tweetcard card shadow p-3 mb-5 bg-body-tertiary rounded border-0">
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                <a class="btn" style="float:right;" href="" role="button"><i class="bi bi-trash" style="color:#D11A2A"></i></a>
-                <h4>Tweet ke-${tweet.id}</h4>
-                <p>${tweet.content}</p>
-                <footer class="blockquote-footer" id="tweetDate">Tweeted on ${date}</footer>
-                </blockquote>
-            </div>
-        </div>
-        `
-        return cardReturn
-    }
-
     console.log(url)
 
     xhr.responseType = responseType;
@@ -56,18 +33,27 @@ function loadTweets(){
     xhr.send()
 }
 
-// $(document).on('submit','#post-tweet-form',function(e){
-//     console.log('tombol submit dipencet')
-//     $.ajax({
-//         method:"POST",
-//         url:"/create-tweet/",
-        
-//         data:$('#post-create-tweet').serialize(),
-            
-//         dataType: "json",
-//         success:function(){
-//             console.log('Berhasil')
-//             loadTweets();
-//         }
-//     })
-// })
+
+
+// change how tweet appears in the page
+function formatTweet(tweet){
+    var d = new Date(tweet.dateCreated)
+    var ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+    var mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
+    var da = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(d);
+    var date = `${da}/${mo}/${ye}`
+    var cardReturn = `
+    <div class="tweetcard card shadow p-3 mb-5 bg-body-tertiary rounded border-0">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+            <a class="btn" style="float:right;" href="" role="button"><i class="bi bi-trash" style="color:#D11A2A"></i></a>
+            <h4>Tweet ke-${tweet.id}</h4>
+            <p>${tweet.content}</p>
+            <footer class="blockquote-footer" id="tweetDate">Tweeted on ${date}</footer>
+            </blockquote>
+        </div>
+    </div>
+    `
+    return cardReturn
+}
+
