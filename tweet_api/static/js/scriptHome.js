@@ -18,8 +18,19 @@ function loadTweets(){
         var mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
         var da = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(d);
         var date = `${da}/${mo}/${ye}`
-        var currentTweet = "<h3>" + "tweet ke-" + tweet.id + " pada app ini" + "</h3>" + "<h6>" + tweet.content  +"</h6>" + "<p>" + date + "</p>";
-        return currentTweet
+        var cardReturn = `
+        <div class="tweetcard card shadow p-3 mb-5 bg-body-tertiary rounded border-0">
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                <a class="btn" style="float:right;" href="" role="button"><i class="bi bi-trash" style="color:#D11A2A"></i></a>
+                <h4>Tweet ke-${tweet.id}</h4>
+                <p>${tweet.content}</p>
+                <footer class="blockquote-footer" id="tweetDate">Tweeted on ${date}</footer>
+                </blockquote>
+            </div>
+        </div>
+        `
+        return cardReturn
     }
 
     console.log(url)
