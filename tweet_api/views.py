@@ -36,6 +36,20 @@ def tweet_create_view(request):
         # return Response(serializer.data)
     return Response({})
 
+@api_view(['GET'])
+def delete_tweet(request, tweet_id):
+    tweet_to_delete = TweetModel.objects.get(id=tweet_id)
+    print(tweet_to_delete)
+    tweet_to_delete.delete()
+    return HttpResponseRedirect(redirect_to="/")
+
+@api_view(['POST'])
+def update_tweet(request,tweet_id):
+    tweet_to_update = TweetModel.objects.get(id=tweet_id)
+    tweet_to_update.content = request.POST['content']
+    tweet_to_update.save()
+    return HttpResponseRedirect(redirect_to="/")
+
 def tweet_detail_view(request, tweet_id, *args, **kwargs):
     print(args,kwargs)
     data = {

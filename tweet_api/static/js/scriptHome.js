@@ -3,6 +3,8 @@ $(document).ready(function(){
     loadTweets();
 })
 
+$('#tweetModal').modal({show:false});
+
 function loadTweets(){
     const tweetsElement = document.getElementById("tweets");
  
@@ -27,6 +29,7 @@ function loadTweets(){
             finalTweetStr += formattedTweet;
         }
         tweetsElement.innerHTML = finalTweetStr;
+        
 
     }
 
@@ -46,8 +49,9 @@ function formatTweet(tweet){
     <div class="tweetcard card shadow p-3 mb-5 bg-body-tertiary rounded border-0">
         <div class="card-body">
             <blockquote class="blockquote mb-0">
-            <a class="btn" style="float:right;" href="" role="button"><i class="bi bi-trash" style="color:#D11A2A"></i></a>
-            <h4>Tweet ke-${tweet.id}</h4>
+            <a class="btn" style="float:right;" href="delete/${tweet.id}" role="button"><i class="bi bi-trash" style="color:#D11A2A"></i></a>
+            <a class="btn" style="float:right;" role="button" id="button${tweet.id}" onclick="openModal(${tweet.id})"><i class="bi bi-pencil-square" style="color:#ffffff"></i></a>
+            <h4>Tweet ke-${tweet.id} hehe</h4>
             <p>${tweet.content}</p>
             <footer class="blockquote-footer" id="tweetDate">Tweeted on ${date}</footer>
             </blockquote>
@@ -55,5 +59,11 @@ function formatTweet(tweet){
     </div>
     `
     return cardReturn
+}
+
+function openModal(tweet_id){
+    $('#tweetModal').modal('show')
+    document.getElementById('post-tweet-form').setAttribute("action","/update/"+tweet_id)
+
 }
 
