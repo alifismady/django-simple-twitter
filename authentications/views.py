@@ -26,7 +26,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            response = HttpResponseRedirect(reverse('home:show_home'))
+            response = HttpResponseRedirect(reverse('tweet_api:home_view'))
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
         else:
@@ -36,6 +36,6 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    response = HttpResponseRedirect(reverse('home:show_home'))
+    response = HttpResponseRedirect(reverse('tweet_api:home_view'))
     response.delete_cookie('last_login')
     return response

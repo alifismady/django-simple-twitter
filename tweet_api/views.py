@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,Http404, JsonResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -27,16 +28,18 @@ def tweet_list_view(request):
     return Response(serializer.data,status=200)
 
 @api_view(['POST'])
+@login_required(login_url='/login')
 def tweet_create_view(request):
     serializer = TweetSerializer(data=request.POST)
     
     if serializer.is_valid():
-        serializer.save()
+        serializer.save(user=request.user)
         return HttpResponseRedirect(redirect_to="/")
         # return Response(serializer.data)
     return Response({})
 
 @api_view(['GET'])
+@login_required(login_url='/login')
 def delete_tweet(request, tweet_id):
     tweet_to_delete = TweetModel.objects.get(id=tweet_id)
     print(tweet_to_delete)

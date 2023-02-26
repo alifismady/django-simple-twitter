@@ -2,6 +2,7 @@ from django.urls import path
 from authentications.views import login_user
 from authentications.views import register
 from authentications.views import logout_user
+
 app_name = 'authentications'
 
 urlpatterns = [

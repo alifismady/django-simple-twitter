@@ -1,5 +1,5 @@
 /*Font*/
-h1,h2,h3,h4,h5,h6,p{
+h1,h2,h3,h4,h5,h6,p,a{
     font-family: 'Plus Jakarta Sans';
     font-style: normal;
     color: white;
@@ -11,13 +11,19 @@ body{
 }
 
 .mainContainer{
-    margin-top: 40px;
+    margin-top: 100px;
 }
 
 /*Navbar*/
+
+.navbar{
+    margin-bottom: 50px;
+}
+
 .navbar-brand{
     color: white;
 }
+
 
 /* Form */
 #buttonSubmit{

@@ -3,7 +3,6 @@ $(document).ready(function(){
     loadTweets();
 })
 
-$('#tweetModal').modal({show:false});
 
 function loadTweets(){
     const tweetsElement = document.getElementById("tweets");
@@ -37,27 +36,45 @@ function loadTweets(){
 }
 
 
+var userName = document.getElementById("userName").value;
+console.log(userName)
 
 // change how tweet appears in the page
 function formatTweet(tweet){
+    
     var d = new Date(tweet.dateCreated)
     var ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
     var mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
     var da = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(d);
     var date = `${da}/${mo}/${ye}`
-    var cardReturn = `
+    if(userName == tweet.username){
+        var cardReturn = `
     <div class="tweetcard card shadow p-3 mb-5 bg-body-tertiary rounded border-0">
         <div class="card-body">
             <blockquote class="blockquote mb-0">
             <a class="btn" style="float:right;" href="delete/${tweet.id}" role="button"><i class="bi bi-trash" style="color:#D11A2A"></i></a>
             <a class="btn" style="float:right;" role="button" id="button${tweet.id}" onclick="openModal(${tweet.id})"><i class="bi bi-pencil-square" style="color:#ffffff"></i></a>
-            <h4>Tweet ke-${tweet.id} hehe</h4>
+            <h4>@${tweet.username}</h4>
             <p>${tweet.content}</p>
             <footer class="blockquote-footer" id="tweetDate">Tweeted on ${date}</footer>
             </blockquote>
         </div>
     </div>
     `
+    } else {
+        var cardReturn = `
+        <div class="tweetcard card shadow p-3 mb-5 bg-body-tertiary rounded border-0">
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                <h4>@${tweet.username}</h4>
+                <p>${tweet.content}</p>
+                <footer class="blockquote-footer" id="tweetDate">Tweeted on ${date}</footer>
+                </blockquote>
+            </div>
+        </div>
+        `
+    }
+    
     return cardReturn
 }
 

@@ -54,13 +54,40 @@
     </div>
   </div>
 
-  <!-- Nav Bar -->
-  <nav class="navbar bg-body-tertiary">
+  <!-- New Nav Bar -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">Welcome to Twitter hehehhehhe</span>
+      {% if user.is_authenticated %}
+      <a class="navbar-brand" href="#">Welcome to RISTEK Social Media, {{user.username}}!</a>
+      {% else %}
+      <a class="navbar-brand" href="#">Welcome to RISTEK Social Media !</a>
+      {% endif %}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list" style="color: white;"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" style="color:white">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout/" style="color:white">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-current="page" style="color:white">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="login/" style="color:white">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+        
+      </div>
     </div>
   </nav>
-    
+
   
 
     <div class="mainContainer container text-center">
@@ -100,6 +127,8 @@
     </div>
 
   
+    <input type="hidden" id="userName" value={{user.username}}>
+
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> 
   
