@@ -1,0 +1,75 @@
+/*Font*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+h1,h2,h3,h4,h5,h6,p,a{
+    font-family: 'Poppins';
+    font-style: normal;
+    color: white;
+}
+
+/*Body*/
+body{
+    background-color: #0C182F;
+}
+.mainContainer{
+    margin-top: 100px;
+}
+
+/*Navbar*/
+.navbar{
+    margin-bottom: 50px;
+}
+.navbar-brand{
+    color: white;
+}
+
+
+/* Form */
+#content{
+    border: 2px solid #88BFE8;
+    filter: drop-shadow(0px 1px 6px #C5E0EB);
+    border-radius: 8px;
+    background-color:#0C182F ;
+    color: white;
+    width:100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    
+}
+#buttonSubmit{
+    
+    color:black;
+    
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 8px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 8px #DAEBF3;
+    border-radius: 8px;
+}
+.buttonsTweet{
+    padding-bottom: 30px;
+}
+
+/*Tweet Card*/
+.tweetcard{
+    background: linear-gradient(180deg, #213356 0%, #0C182F 100%);
+    box-shadow: 6.39689px 6.39689px 19.1907px #1D2E4E;
+    text-align: left;
+    border: 2px solid #88BFE8;
+    filter: drop-shadow(0px 1px 6px #C5E0EB);
+    border-radius: 8px;
+}
+#tweetDate{
+    font-size: small;
+}
+
+/* For small screen */
+@media only screen and (max-width: 600px) {
+    p,h2,h3,h4,h5,h6 {
+        font-size: smaller;
+    }
+}

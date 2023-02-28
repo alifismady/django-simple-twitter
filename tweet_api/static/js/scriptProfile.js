@@ -5,12 +5,15 @@ $(document).ready(function(){
 
 
 function loadTweets(){
-    const tweetsElement = document.getElementById("tweets");
+
     var tweet_count = 0;
+    const tweetCount = document.getElementById("tweetCount");
+
+    const tweetsElement = document.getElementById("tweets");
  
     const xhr = new XMLHttpRequest();
     const method = 'GET';
-    const url = "/tweet";
+    const url = "/profile/tweet";
     const responseType = "json";
     console.log(url)
 
@@ -25,17 +28,18 @@ function loadTweets(){
         for(let i of listedTweets){
             var tweetObj = i;
             tweet_count++;
+            
             var formattedTweet = formatTweet(tweetObj);
             finalTweetStr += formattedTweet;
         }
         tweetsElement.innerHTML = finalTweetStr;
-        
-        if(tweet_count==0){
-            tweetsElement.innerHTML = `
-            <h2>There are no tweets to show :(</h2>
+        if(tweet_count!=0){
+            tweetCount.innerHTML +=`
+            <h6>You have ${tweet_count} tweet</h6>;
             `
-        } 
-
+        } else {
+            tweetCount.innerHTML = `<h6>You have no tweet</h6>`
+        }
     }
 
     xhr.send()
@@ -86,7 +90,7 @@ function formatTweet(tweet){
 
 function openModal(tweet_id){
     $('#tweetModal').modal('show')
-    document.getElementById('post-tweet-form').setAttribute("action","/update/"+tweet_id)
+    document.getElementById('post-tweet-form').setAttribute("action","/profile/update/"+tweet_id)
 
 }
 

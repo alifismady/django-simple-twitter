@@ -52,6 +52,35 @@ def update_tweet(request,tweet_id):
     tweet_to_update.save()
     return HttpResponseRedirect(redirect_to="/")
 
+def profile_view(request, *args, **kwargs):
+    form = TweetForm()
+    context={
+        'form':form
+    }
+    return render(request,"pages/profile.html",context)
+
+@api_view(['GET'])
+def tweet_user_view(request):
+    query = TweetModel.objects.filter(user = request.user)
+    serializer = TweetSerializer(query,many=True)
+    return Response(serializer.data,status=200)
+
+@api_view(['GET'])
+@login_required(login_url='/login')
+def delete_tweet_user(request, tweet_id):
+    tweet_to_delete = TweetModel.objects.get(id=tweet_id)
+    print(tweet_to_delete)
+    tweet_to_delete.delete()
+    return HttpResponseRedirect(redirect_to="/profile")
+
+@api_view(['POST'])
+def update_tweet_user(request,tweet_id):
+    tweet_to_update = TweetModel.objects.get(id=tweet_id)
+    tweet_to_update.content = request.POST['content']
+    tweet_to_update.save()
+    return HttpResponseRedirect(redirect_to="/profile")
+
+
 def tweet_detail_view(request, tweet_id, *args, **kwargs):
     print(args,kwargs)
     data = {
