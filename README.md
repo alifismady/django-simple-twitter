@@ -3,7 +3,7 @@ Project Oprec RISTEK 2023
 Tahapan menjalankan aplikasi:
 1. Buat virtual enviroment dengan command -> "python -m venv venv"
 2. Run virtual enviroment pada terminal -> windows: "venv\Scripts\activate.bat"; mac/linux: "source venv/Scripts/activate"
-3. Install dependencies yang diperlukan -> diletakan pada "requirements.txt"
+3. Install dependencies yang diperlukan, diletakan pada "requirements.txt" command -> "pip install -r 'requirements.txt'" 
 4. Migrate database schema ke SQlite dengan command -> "./manage.py migrate"
 5. Jalankan server django dengan command -> "./manage.py runserver"
 6. Buka url "localhost:8000" pada terminal untuk membuka server
