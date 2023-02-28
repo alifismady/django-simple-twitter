@@ -13,3 +13,4 @@ Aplikasi:
 2. Terdapat textfield yang dapat diisi dengan text untuk mengirim tweet, pengguna terlebih dahulu harus login ke akun sebelum dapat mengirim tweet
 3. Tweet yang sudah dikirim dapat diedit atau dihapus oleh pembuat tweet tersebut dengan mengklik tombol yang terdapat pada tweet terkirim
 4. Tweet dari setiap pengguna akan ditampilkan pada halaman utama, hanya pemilik tweet yang dapat mengedit atau menghapus tweet mereka
+5. Visit url "localhost:8000/admin" untuk mengunjungi django admin site, gunakann command "./manage.py createsuperuser" untuk membuat super user yang dapat login ke site admin
