@@ -1,4 +1,4 @@
-Project Oprec RISTEK 2023
+
 
 Tahapan menjalankan aplikasi:
 1. Buat virtual enviroment dengan command -> "python -m venv venv"
